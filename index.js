@@ -4,7 +4,6 @@
 
 const Discord = require('discord.js');
 const config = require("./config.json");
-
 const myIntents = new Discord.Intents();
 myIntents.add(Discord.Intents.FLAGS.GUILDS);
 myIntents.add(Discord.Intents.FLAGS.GUILD_MESSAGES);
@@ -14,7 +13,6 @@ const client = new Discord.Client({
 });
 
 client.on('ready', function (myClient) {
-
     //generate link
     let inviteLink = myClient.generateInvite({
         scopes: ['bot']
@@ -31,7 +29,6 @@ client.on('messageCreate', function (userInput) {
         return;
     }
 
-    //Lee's work
     //international greeting
     const greetings = ["hello", "hi", "welcome", "hey", "wassup"];
     const greetings2 = ["Bonjour", "Hola", "Xin chao", "Konnichiwa", "Aloha"];
@@ -48,71 +45,55 @@ client.on('messageCreate', function (userInput) {
     {
         case '1':
             userInput.reply("partridge in a pear tree");
-            break;
+            return;
         case '2':
             userInput.reply("turtle doves");
-            break;
+            return;
         case '3':
             userInput.reply("French hens");
-            break;
+            return;
         case '4':
             userInput.reply("calling birds");
-            break;
+            return;
         case '5':
             userInput.reply("golden rings");
-            break;
+            return;
         case '6':
             userInput.reply("geese a-laying");
-            break;
+            return;
         case '7':
             userInput.reply("swans a-swimming");
-            break;
+            return;
         case '8':
             userInput.reply("maids a-milking");
-            break;
+            return;
         case '9':
             userInput.reply("ladies dancing");
-            break;
+            return;
         case '10':
             userInput.reply("lords a-leaping");
-            break;
+            return;
         case '11':
             userInput.reply("pipers piping");
-            break;
+            return;
         case '12':
             userInput.reply("drummers drumming");
-            break;
+            return;
         default:
             break;
     }
 
-    // If user sends yes, reply with no
-    if (userInput.content.toLowerCase() == 'red') {
-        userInput.channel.send("blue")
-            .then((msg) => {
-                console.log("message sent");
-            })
-            .catch(error => {
-                console.log("Error: " + error.message);
-            })
-        return;
-    } else if (userInput.content.toLowerCase() == 'green') {
-        userInput.channel.send("orange")
-            .catch(function (error) {
-                console.log("Couldn't reply: ", error.message);
-            })
-        return;
-    }
-
     //respond to the bot name
-    if (userInput.content.includes('@Second')) {
-        userInput.reply("Heeeeey, thank you for calling my name, " + userInput.author + " !");
+    if (userInput.content.includes("891519385179680799")) {
+        userInput.reply("Heeeeey, thank you for calling my name, <@" + userInput.author + "> !");
         return;
+    } else if (userInput.content.includes("Second") || userInput.content.includes("second")){
+        userInput.reply("Heeeeey, thank you for calling my name, <@" + userInput.author + "> !");
     }
 
     //emoji detector
-    // if(userInput.content[0] == ":a:"){
-    //     userInput.reply("Nice emoji! " + userInput.content);
+    // if((userInput.content.includes("<:") && userInput.content.includes("<a:")) && userInput.content.includes(">")){
+    //     userInput.reply("Nice emoji, <@" + userInput.author + "> "+ userInput.content);
     //     return;
     // }
 
@@ -125,6 +106,7 @@ client.on('messageCreate', function (userInput) {
         userInput.reply("Let me unencrypt " + userInput.content + "... ");
     }
     return;
+    
 });
 
 client.login(config.token);

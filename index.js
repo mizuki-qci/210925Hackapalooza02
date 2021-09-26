@@ -1,5 +1,5 @@
 /**
- * 
+ * A simple Discord bot that responds according to user's input
  */
 
 const Discord = require('discord.js');
@@ -106,7 +106,7 @@ client.on('messageCreate', function (userInput) {
         userInput.reply("Let me unencrypt " + userInput.content + "... ");
     }
     return;
-    
+
 });
 
 client.login(config.token);
